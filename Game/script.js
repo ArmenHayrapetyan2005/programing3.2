@@ -46,7 +46,7 @@ function generator(matLen, gr, grEat, grPred, grPred1, grWall) {
 
 let side = 20;
 
-let matrix = generator(20, 45, 30, 10, 10, 15);
+let matrix = generator(20, 45, 40, 20, 20, 20);
 
 let grassArr = []
 let grassEaterArr = []
