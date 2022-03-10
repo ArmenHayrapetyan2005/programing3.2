@@ -44,9 +44,9 @@ function generator(matLen, gr, grEat, grPred, grPred1, grWall) {
     return matrix;
 }
 
-let side = 20;
+let side = 15;
 
-let matrix = generator(20, 45, 40, 20, 20, 20);
+let matrix = generator(30, 100, 60, 10, 1, 1,1);
 
 let grassArr = []
 let grassEaterArr = []
@@ -84,6 +84,20 @@ function setup() {
     }
 }
 
+var fs = require('fs');
+
+var statistics = {};
+let a = 200;
+
+let b = 80;
+setInterval(function() {
+statistics.grass = a++;
+statistics.grassEater = b++;
+fs.writeFile("statistics.json", JSON.stringify( statistics), function(){
+console.log("send")
+})
+},1000);
+
 function draw() {
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
@@ -102,6 +116,7 @@ function draw() {
             } else if (matrix[y][x] == 6) {
                 fill('black')
             }
+
             rect(x * side, y * side, side, side)
         }
     }
